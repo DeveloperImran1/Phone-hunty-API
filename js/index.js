@@ -17,12 +17,22 @@ const displayPhones = (phones, showAll) => {
     phoneContainer.textContent= '';
 
     // if phones result more than 12 ,, than we added show all button
+     // handle show more button and Product not found content
+
+     const outOfStock = document.getElementById("outOfStock");
+
     const showButton = document.getElementById('show-all-phone');
     if(phones.length > 12 && !showAll){
-      showButton.classList.remove('hidden')
+      showButton.classList.remove('hidden');
+      outOfStock.classList.add("hidden")
+    }
+    else if(phones.length === 0){
+      showButton.classList.add("hidden")
+      outOfStock.classList.remove("hidden")
     }
     else{
       showButton.classList.add("hidden")
+      outOfStock.classList.add("hidden")
     }
     
 
@@ -34,7 +44,7 @@ const displayPhones = (phones, showAll) => {
  
    
     phones.forEach( phone => {
-      console.log(phone)
+      // console.log(phone)
 
         // step 2: ceate a div.
         const phoneCard = document.createElement('div');
